@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Shoe Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            
+            <div class="logo">
+              <img src="/images/logo.png" alt="logo"> 
+              </div> 
+              <p id="flickerText">adidas sneakers on sale for a time, Snap it up !</p>
+             <div class="nav-links">
+                <a href="#">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <a href="#">
+                <i class="fa-solid fa-gift"></i>
+                </a> 
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+
+            </div>
+        
+            <script src="script.js"></script>
+        </nav>
+        <div class="row"  style="margin-top: 0px;">
+            <div class="row">
+                <div class="col-1">
+        
+                <h1>Adidas Sports</h1>
+                <p>Adidas' product range targets not only athletes but also those who embrace a daily lifestyle. Comfortable and modern designs are combined with models that reflect the sneaker culture. Therefore, Adidas shoes are easily preferred both in the gym and on the streets.</p>
+
+                <div class="price">
+                    <h2> END OF SEASON SALE!</h2>
+                    <h2>$90</h2>
+                    <s>$150</s>
+                </div>
+                <div class="buttons">
+                    <button id="addToCartButton">ADD TO CART</button>
+                    <div id="checkmark" class="hidden">&#10004;</div>
+                    <button id="categoryButton">CATEGORY</button>
+                   <div class="category-list"></div> 
+                    <button id="sizeButton">Size</button>
+<div class="size-list"></div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="feature-img">
+            
+                <div class="shoe-slider">
+                    <img src="/images/ayakkabı-5.png" alt="Ayakkabı 5">
+                    <img src="/images/ayakkabı-3.png" alt="Ayakkabı 3">
+                   
+                   <img src="/images/images/images/images/ayakkabı-11.png" alt="Ayakkabı 11">
+                   <img src="/images/images/images/images/ayakkabı-12.png" alt="Ayakkabı 12">
+                
+                </div>
+                <button id="prevBtn">Geri</button>
+                <button id="nextBtn">İleri</button>
+                
+                
+           
+            </div>  
+           
+           
+        </div>
+            </div>
+              
+        </div>
+    </div>
+
+    <script>
+        const shoeSlider = document.querySelector('.shoe-slider');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const images = shoeSlider.querySelectorAll('img');
+let currentIndex = 0;
+
+function showImage(index) {
+    images.forEach((image, idx) => {
+        if (idx === index) {
+            image.style.display = 'block';
+        } else {
+            image.style.display = 'none';
+        }
+    });
+}
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+});
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+});
+
+// İlk resmi göster
+showImage(currentIndex);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sizeButton = document.getElementById('sizeButton');
+    const sizeList = document.querySelector('.size-list');
+    
+    sizeButton.addEventListener('click', function() {
+        sizeList.innerHTML = ''; 
+        
+        for (let size = 35; size <= 39; size++) {
+            const sizeItem = document.createElement('div');
+            sizeItem.textContent = size;
+            sizeList.appendChild(sizeItem);
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryButton = document.getElementById('categoryButton');
+    const categoryList = document.querySelector('.category-list');
+    
+    categoryButton.addEventListener('click', function() {
+        const categories = ['Outdoor', 'Sneaker','Training']; 
+        categoryList.innerHTML = ''; 
+        
+        categories.forEach(category => {
+            const categoryItem = document.createElement('div');
+            categoryItem.textContent = category;
+            categoryList.appendChild(categoryItem);
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButton = document.getElementById('addToCartButton');
+    const checkmark = document.getElementById('checkmark');
+
+    addToCartButton.addEventListener('click', function() {
+        checkmark.classList.remove('hidden');
+        setTimeout(function() {
+            checkmark.classList.add('hidden');
+        }, 1500); 
+    });
+});
+
+
+
+
+    </script>
+</body>
+
+</html>
+
